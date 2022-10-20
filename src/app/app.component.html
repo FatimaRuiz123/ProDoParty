@@ -1,20 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand hola" routerLink="/">Proyectos</a>
+    <a class="navbar-brand hola" routerLink="/#">Dofest</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse hola1" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link hola2" routerLink="/proyectos/new">Registrar</a>
+        <li class="nav-item" (click)="mostrarCatalogo()">
+          <a class="nav-link hola2" routerLink="/proyectos/new">Ctalogo de productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link hola2" routerLink="/proyectos/buscar">Buscar</a>
+          <a class="nav-link hola2" routerLink="/proyectos/buscar">Sillas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link hola2" routerLink="/proyectos/rango">Rango</a>
+          <a class="nav-link hola2" routerLink="/proyectos/rango">Adornos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link hola2" routerLink="/proyectos/rango">Infables</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link hola2" routerLink="/proyectos/rango">Mesas</a>
+        </li>
+
       </ul>
     </div>
   </div>
