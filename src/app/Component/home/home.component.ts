@@ -1,18 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck {
   home = false;
-  mesa = true;
+  mesa = false;
   sill = true;
   ador = true;
   infla = true;
+  areglo=['hbjvdb','khhfjf','fbdvf m','bfvdvbhm']
+  constructor(private mostrarCatalogoService: MostrarCatalogoService) {
+   
+  }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit() {
+    
+  }
+  se() {
+    this.home = this.mostrarCatalogoService.estadoHome();
+    this.mesa = this.mostrarCatalogoService.estadoMesa();
+    this.sill = this.mostrarCatalogoService.estadoSill();
+    this.infla = this.mostrarCatalogoService.estadoInfla();
+    this.ador = this.mostrarCatalogoService.estadoAdor();
+  }
+  ngDoCheck(){
+    this.se()
+  }
 }

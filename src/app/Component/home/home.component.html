@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div [hidden]="home">home</div>
+    
+    <div [hidden]="home">
+        <div *ngFor="let item of areglo" style="width: 100px; height: 100px; background-color:blue">
+
+        </div>
+    </div>
     <div [hidden]="mesa">sillas</div>
     <div [hidden]="sill">mesas</div>
     <div [hidden]="ador">adornos</div>
