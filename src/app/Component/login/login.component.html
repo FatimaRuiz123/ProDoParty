@@ -8,22 +8,22 @@
     <title>Document</title>
 </head>
 
-<body style="background-color:gray;" >
+<body style="background-color:rgb(18, 36, 197);" >
     
     <div class="container">
         <div class="backbox">
             <div class="loginMsg">
                 <div class="textcontent">
-                    <p class="title">Don't have an account?</p>
-                    <p>Sign up to save all your graph.</p>
-                    <button id="switch1">Sign Up</button>
+                    <p class="title">No tienes cuenta?</p>
+                    <p>Registrate para guardar y realizar tus rentas.</p>
+                    <button id="switch1">Reguistrarse</button>
                 </div>
             </div>
             <div class="signupMsg visibility">
                 <div class="textcontent">
-                    <p class="title">Have an account?</p>
-                    <p>Log in to see all your collection.</p>
-                    <button id="switch2">LOG IN</button>
+                    <p class="title">¿Tienes Cuenta?</p>
+                    <p>Inisia sesión para poder realizar tus rentas.</p>
+                    <button id="switch2">Inisia sesión</button>
                 </div>
             </div>
         </div>
@@ -31,29 +31,30 @@
 
         <div class="frontbox">
             <div class="login">
-                <h2>LOG IN</h2>
-                <div class="inputbox">
-                    <input type="text" name="email" placeholder="  EMAIL">
-                    <input type="password" name="password" placeholder="  PASSWORD">
+                <h2>Iniciar sesión</h2>
+                <div class="inputbox" style="margin-top:100px;">
+                    <input type="text"[(ngModel)]="e_mail1" name="email" placeholder="  EMAIL">
+                    <input type="password" [(ngModel)]="password1" name="password" placeholder="  Contraseña">
                 </div>
-                <p>FORGET PASSWORD?</p>
-                <button>LOG IN</button>
+                <button (click)="log_in()">Inisiar</button>
             </div>
 
             <div class="signup hide">
-                <h2>SIGN UP</h2>
+                <h2>Registrarse</h2>
                 <div class="inputbox">
-                    <input type="text" name="fullname" placeholder="  FULLNAME">
-                    <input type="text" name="email" placeholder="  EMAIL">
-                    <input type="password" name="password" placeholder="  PASSWORD">
+                    <input type="text" [(ngModel)]="name" name="fullname" placeholder="  NOMBRE">
+                    <input type="text"  [(ngModel)]="lastName" name="apellidos" placeholder="  APELLIDOS">
+                    <input type="text"  [(ngModel)]="e_mail" name="email" placeholder="  EMAIL">
+                    <input type="password"  [(ngModel)]="password" name="password" placeholder="  CONTRASEÑA">
+                    <input type="password"  [(ngModel)]="confirmPassword" name="password" placeholder="  CONFIRMAR CONTRASEÑA">
+                    <p>{{text}}</p>
                 </div>
-                <button>SIGN UP</button>
+                <button (click)="seven()">Registrarse</button>
             </div>
 
         </div>
         <!-- frontbox -->
-    </div>
-    
+    </div>    
 </body>
 
 </html>
