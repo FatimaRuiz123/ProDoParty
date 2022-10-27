@@ -12,13 +12,13 @@ export class HomeComponent implements OnInit, DoCheck {
   sill = true;
   ador = true;
   infla = true;
-  areglo=['hbjvdb','khhfjf','fbdvf m','bfvdvbhm']
+  images=['hbjvdb','khhfjf','fbdvf m','bfvdvbhm']
   constructor(private mostrarCatalogoService: MostrarCatalogoService) {
-   
+
   }
 
   ngOnInit() {
-    
+
   }
   se() {
     this.home = this.mostrarCatalogoService.estadoHome();
