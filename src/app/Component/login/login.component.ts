@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import * as CryptoJS from 'crypto-js';
@@ -10,6 +11,9 @@ import {
 import { User } from 'src/app/models/user/user.module';
 import { RegistrarService } from 'src/app/services/registrar.service';
 import { LogInService } from 'src/app/services/log-in.service';
+=======
+import {} from 'jquery';
+>>>>>>> e64fa38af4670d809c46190f0b2c33be88c7d511
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -68,6 +72,7 @@ export class LoginComponent implements OnInit {
       $frontbox.removeClass('moving');
       $signupMsg.toggleClass('visibility');
 
+<<<<<<< HEAD
       $signup.toggleClass('hide');
       $login.toggleClass('hide');
     });
@@ -95,6 +100,15 @@ export class LoginComponent implements OnInit {
       this.sevenDatabase();
     } else this.alert('las contraseñas no coinciden');
   }
+=======
+            $signup.toggleClass('hide');
+            $login.toggleClass('hide');
+        })
+
+
+  }
+
+>>>>>>> e64fa38af4670d809c46190f0b2c33be88c7d511
 
   alert(text: string) {
     this.snackBar.open('Llena el campo ' + text, '', {
