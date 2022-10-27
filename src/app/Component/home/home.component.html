@@ -6,15 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    
-    <div [hidden]="home">
-        <div *ngFor="let item of areglo" style="width: 100px; height: 100px; background-color:blue">
 
-        </div>
+<body>
+
+    <div [hidden]="home">
+        <!-- <div *ngFor="let item of areglo" style="width: 100px; height: 100px; background-color:blue">
+        </div> -->
+        <ngb-carousel
+	#carousel
+	[interval]="1000"
+>
+	<ng-template ngbSlide *ngFor="let img of images; index as i">
+		<div class="carousel-caption">
+			<h3>My slide {{i + 1}} title</h3>
+		</div>
+		<a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+			<div class="picsum-img-wrapper">
+				<img [src]="img" alt="My image {{i + 1}} description" />
+			</div>
+		</a>
+	</ng-template>
+</ngb-carousel>
     </div>
-    <div [hidden]="mesa">sillas</div>
-    <div [hidden]="sill">mesas</div>
+    <div [hidden]="mesa">Mesas</div>
+    <div [hidden]="sill">Sillas</div>
     <div [hidden]="ador">adornos</div>
     <div [hidden]="infla">Inflables</div>
 </body>
