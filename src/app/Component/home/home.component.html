@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,25 +13,23 @@
     <div [hidden]="home">
         <!-- <div *ngFor="let item of areglo" style="width: 100px; height: 100px; background-color:blue">
         </div> -->
-        <ngb-carousel
-	#carousel
-	[interval]="1000"
->
-	<ng-template ngbSlide *ngFor="let img of images; index as i">
-		<div class="carousel-caption">
-			<h3>My slide {{i + 1}} title</h3>
-		</div>
-		<a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-			<div class="picsum-img-wrapper">
-				<img [src]="img" alt="My image {{i + 1}} description" />
-			</div>
-		</a>
-	</ng-template>
-</ngb-carousel>
+        <!-- <ngb-carousel #carousel [interval]="1000">
+            <ng-template ngbSlide *ngFor="let img of images; index as i">
+                <div class="carousel-caption">
+                    <h3>My slide {{i + 1}} title</h3>
+                </div>
+                <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper">
+                        <img [src]="img" alt="My image {{i + 1}} description" />
+                    </div>
+                </a>
+            </ng-template>
+        </ngb-carousel> -->
     </div>
     <div [hidden]="mesa">Mesas</div>
     <div [hidden]="sill">Sillas</div>
     <div [hidden]="ador">adornos</div>
     <div [hidden]="infla">Inflables</div>
 </body>
+
 </html>

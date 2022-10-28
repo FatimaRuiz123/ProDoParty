@@ -1,6 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
