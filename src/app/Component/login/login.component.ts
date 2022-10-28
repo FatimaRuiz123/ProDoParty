@@ -17,7 +17,7 @@ import {} from 'jquery';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  Autorice = true;
+  Autorice = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds = 5;
