@@ -4,7 +4,7 @@ import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxPayPalModule,
     
   ],
   providers: [],

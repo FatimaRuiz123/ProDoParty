@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MostrarCatalogoService } from './services/mostrar-catalogo.service';
 import { nav } from './models/model-nav/model-nav.module';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
