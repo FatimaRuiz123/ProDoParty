@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProcessPaymentService {
 
   cartItems = [];
-  total = 0;
+  total = 1000;
 
   payPalConfig?: IPayPalConfig;
 
