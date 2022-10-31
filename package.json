@@ -28,7 +28,10 @@
     "@types/jquery": "^3.5.14",
     "crypto-js": "^4.1.1",
     "jquery": "^3.6.1",
+    "moment": "^2.29.4",
     "ng-zorro-antd": "^14.1.1",
+    "primeicons": "^6.0.1",
+    "primeng": "^14.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

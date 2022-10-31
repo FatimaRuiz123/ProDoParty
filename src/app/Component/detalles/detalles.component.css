@@ -1,7 +1,7 @@
 .hijo {
   width: 90%;
   height: 80%;
-  border: 2px solid #000000;
+  
   position: absolute;
   top: 12%;
   left: 5%;
@@ -14,6 +14,35 @@
 .demo-inline-calendar-card {
   width: 300px;
 }
+.events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.events .ant-badge-status {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.notes-month {
+  text-align: center;
+  font-size: 28px;
+}
+
+.notes-month section {
+  font-size: 28px;
+}
+.form-control{
+  text-align: center;
+}
+.demo-inline-calendar-card {
+  width: 300px;
+}
+
 .events {
   list-style: none;
   margin: 0;

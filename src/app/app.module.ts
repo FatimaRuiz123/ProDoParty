@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { CalendarModule } from 'primeng/calendar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +24,6 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     DetallesComponent,
     LoginComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,13 @@ import { FormsModule } from '@angular/forms';
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    
+    MatIconModule,
+    MatMenuModule,
+    CalendarModule,
+    NzBadgeModule
+     
   ],
   providers: [],
-  bootstrap: [AppComponent ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

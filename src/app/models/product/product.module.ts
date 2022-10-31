@@ -1,4 +1,5 @@
 export interface Product {
+  id?: string,
   Name: string;
   Description: string;
   TotalProduct: number;
@@ -7,4 +8,7 @@ export interface Product {
   Type: string;
   Price: number;
   imagePath: string;
+}
+export interface Type {
+  Type: string;
 }

@@ -13,6 +13,7 @@ export class MostrarCatalogoService {
   sill = true;
   ador = true;
   infla = true;
+  mostral = false;
   constructor() {}
   mostrar(l: nav) {
     this.home = l.home;
@@ -20,6 +21,9 @@ export class MostrarCatalogoService {
     this.ador = l.ador;
     this.infla = l.infla
     this.sill = l.sill;
+  }
+  Mostrab(mostrar: boolean){
+    this.mostral = mostrar;
   }
   estadoHome() {
     return this.home;
@@ -35,5 +39,8 @@ export class MostrarCatalogoService {
   }
   estadoInfla() {
     return this.infla;
+  }
+  estadoButton() {
+    return this.mostral;
   }
 }

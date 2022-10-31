@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user/user.module';
 import { RegistrarService } from 'src/app/services/registrar.service';
 import { LogInService } from 'src/app/services/log-in.service';
 import {} from 'jquery';
+import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     private registrarService: RegistrarService,
-    private loginService: LogInService
+    private loginService: LogInService,
+    private mostrarCatalogoService: MostrarCatalogoService
   ) {
     if (this.Autorice) {
     } else this.router.navigateByUrl('home');
@@ -46,9 +48,11 @@ export class LoginComponent implements OnInit {
     setTimeout(function () {
       $('#switch2').click();
     }, 3000);
+    this.mostrarCatalogoService.Mostrab(true);
   }
 
   ngOnInit(): void {
+    
     var $loginMsg = $('.loginMsg'),
       $login = $('.login'),
       $signupMsg = $('.signupMsg'),
@@ -123,6 +127,7 @@ export class LoginComponent implements OnInit {
               const pass = this.decrypt(user[i].Password);
               if (pass === this.password1) {
                 this.router.navigateByUrl('/home');
+                localStorage.setItem('user',''+user[i]._id)
               } else this.alert('contraseña incorrecta');
             }else this.alert('Llena el campo contraseña');
           } else this.alert('No se encuentra el gmail intentalo nuevamente');

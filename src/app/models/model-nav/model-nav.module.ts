@@ -3,5 +3,5 @@ export interface nav {
   mesa: boolean;
   sill: boolean;
   ador: boolean;
-  infla: boolean;
+  infla: boolean
 }

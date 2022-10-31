@@ -1,16 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { MostrarCatalogoService } from './services/mostrar-catalogo.service';
 import { nav } from './models/model-nav/model-nav.module';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   title = 'DoParty';
-  constructor(private mostrarCatalogoService: MostrarCatalogoService) {}
+  mostrar = false;
+  constructor(
+    private mostrarCatalogoService: MostrarCatalogoService,
+    private router: Router
+  ) {}
+  ngDoCheck() {
+    this.mostrar = this.mostrarCatalogoService.estadoButton();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('user') === '') {
+      
+    }
+  }
   mostrarCatalogo() {
     const l: nav = {
       home: false,
@@ -20,6 +32,7 @@ export class AppComponent implements OnInit {
       infla: true,
     };
     this.mostrarCatalogoService.mostrar(l);
+    this.router.navigateByUrl('/home');
   }
   mostrarSillas() {
     const l: nav = {
@@ -30,6 +43,7 @@ export class AppComponent implements OnInit {
       infla: true,
     };
     this.mostrarCatalogoService.mostrar(l);
+    this.router.navigateByUrl('/home');
   }
   mostrarMesas() {
     const l: nav = {
@@ -40,6 +54,7 @@ export class AppComponent implements OnInit {
       infla: true,
     };
     this.mostrarCatalogoService.mostrar(l);
+    this.router.navigateByUrl('/home');
   }
   mostrarInflables() {
     const l: nav = {
@@ -50,6 +65,7 @@ export class AppComponent implements OnInit {
       infla: false,
     };
     this.mostrarCatalogoService.mostrar(l);
+    this.router.navigateByUrl('/home');
   }
   mostrarAdornos() {
     const l: nav = {
@@ -60,5 +76,11 @@ export class AppComponent implements OnInit {
       infla: true,
     };
     this.mostrarCatalogoService.mostrar(l);
+    this.router.navigateByUrl('/home');
+  }
+  mostrarCarrito() {}
+  salir() {
+    localStorage.setItem('user', '');
+    this.router.navigateByUrl('/login');
   }
 }

@@ -1,13 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand hola"(click)="mostrarCatalogo()">Dofest</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <div [hidden]="mostrar" class="container-fluid">
+    <a class="navbar-brand hola" (click)="mostrarCatalogo()">Dofest</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse hola1 justify-content-end" id="navbarNav">
+    <div  class="collapse navbar-collapse hola1 justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item" (click)="mostrarCatalogo()">
-          <a class="nav-link hola2" (click)="mostrarCatalogo()">Catalogo de productos</a>
+          <a class="nav-link hola2" (click)="mostrarCatalogo()">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link hola2" (click)="mostrarSillas()">Sillas</a>
@@ -21,7 +22,26 @@
         <li class="nav-item">
           <a class="nav-link hola2" (click)="mostrarMesas()">Mesas</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link hola2" (click)="mostrarCarrito()">
+            <mat-icon aria-hidden="false"><span class="material-symbols-outlined">
+                local_shipping
+              </span></mat-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link hola2" >
+            <mat-icon  mat-icon-button [matMenuTriggerFor]="menu" aria-hidden="false"><span class="material-symbols-sharp">
+              account_circle
+              </span></mat-icon>
+          </a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="salir()">
+              <mat-icon>logout</mat-icon>
+              <span>salir</span>
+            </button>
+          </mat-menu>
+        </li>
       </ul>
     </div>
   </div>
