@@ -1,10 +1,9 @@
+import { OrderProduct } from "../order/order.module";
+
 export interface Cart {
-  IdCustomer: number,
-	Products: [
-			{
-				_id: string,
-				IdProduct: string,
-				Amount: number
-			}
-		]
+	IdCustomer: string,
+	Products:OrderProduct[]
+} 
+export interface CartCostmer{
+	IdCustomer:string,
 } 

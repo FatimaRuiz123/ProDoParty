@@ -18,26 +18,33 @@
                         <a class="list-group-item list-group-item-action active" aria-current="true">
                             <h2>Detalle del producto</h2>
                         </a>
-                        <a class="list-group-item list-group-item-action"><h3>{{product?.Name}}</h3></a>
-                        <a class="list-group-item list-group-item-action"><h3>{{product?.Description}}</h3></a>
+                        <a class="list-group-item list-group-item-action"><h3>{{product[0].Name}}</h3></a>
+                        <a class="list-group-item list-group-item-action"><h3>{{product[0].Description}}</h3></a>
                         <a class="list-group-item list-group-item-action">
                             <h3>Presio por dia.</h3>
-                            <h4>$ {{product?.Price}}</h4></a>
+                            <h4>$ {{product[0].Price}}</h4></a>
                         <a class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"><h3>Por el momento contamos con.</h3>
-                            <h4>{{product?.TotalStock}} Unidades</h4></a>
+                            <h4>{{product[0].TotalStock}} Unidades</h4></a>
                       </div>
                 </div>
                 <div class="col ">
-                    <br>
-                    <br>
                     <div class="container_1">
-                        <img [src]="product?.imagePath" alt="" height="450px">
+                        <img [src]="product[0].imagePath" alt="" height="450px">
                     </div><br>
                     <div class="container_1"><button class="btn"
                             style="margin-left: 130px;margin-right: 50px;font-size: 30px;"
-                            (click)="menos()">-</button><input type="text" class="form-control"
-                            [(ngModel)]="name"><button class="btn"
+                            (click)="menos()">-</button><input [autocomplete]="resume()" type="text" class="form-control"
+                            [(ngModel)]="cantidad"><button class="btn"
                             style="margin-left: 50px; font-size: 30px; margin-right: 130px;" (click)="mas()">+</button>
+                    </div>
+                    <div>
+                        <a class="list-group-item list-group-item-action active">
+                            <h3>
+                                Camion
+                            </h3>
+                        </a>
+                        <a class="list-group-item list-group-item-action"><div class="container"><div class="row"> <div class="col"><h3>total:  {{total}} $</h3> </div>
+                        <div class="col"> <button (click)="agregarCart()" class="btn btn-primary">Agregar al camioncito</button> </div></div></div></a>
                     </div>
                 </div>
                 <div class="col " style=" text-align: center;">

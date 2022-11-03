@@ -1,156 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <div [hidden]="home">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  <body>
+    <div>
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div
+            class="carousel-item active"
+            data-bs-interval="10000"
+            (click)="detalles('' + sillaRandom[0].id)"
+          >
+            <img
+              [src]="sillaRandom[0].imagePath"
+              class="rounded mx-auto d-block"
+              alt=""
+              height="400px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ sillaRandom[0].Name }}</h5>
+              <p>{{ sillaRandom[0].Description }}</p>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            data-bs-interval="2000"
+            (click)="detalles('' + mesaRandom[0].id)"
+          >
+            <img
+              [src]="mesaRandom[0].imagePath"
+              class="rounded mx-auto d-block"
+              alt=""
+              height="400px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ mesaRandom[0].Name }}</h5>
+              <p>{{ mesaRandom[0].Description }}</p>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            (click)="detalles('' + adornoRandom[0].id)"
+          >
+            <img
+              [src]="adornoRandom[0].imagePath"
+              class="rounded mx-auto d-block"
+              alt=""
+              height="400px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ adornoRandom[0].Name }}</h5>
+              <p>{{ adornoRandom[0].Description }}</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000" (click)="detalles(''+sillaRandom[0].id)">
-          <img [src]="sillaRandom[0].imagePath" class="rounded mx-auto d-block" alt="" height="400px">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{sillaRandom[0].Name}}</h5>
-            <p>{{sillaRandom[0].Description}}</p>
-          </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="2000" (click)="detalles(''+mesaRandom[0].id)">
-          <img [src]="mesaRandom[0].imagePath" class="rounded mx-auto d-block" alt="" height="400px">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{mesaRandom[0].Name}}</h5>
-            <p>{{mesaRandom[0].Description}}</p>
-          </div>
-        </div>
-        <div class="carousel-item" (click)="detalles(''+adornoRandom[0].id)">
-          <img [src]="adornoRandom[0].imagePath" class="rounded mx-auto d-block" alt="" height="400px">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{adornoRandom[0].Name}}</h5>
-            <p>{{adornoRandom[0].Description}}</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="container">
-
-      <div class="row justify-content-around">
-        <a class="list-group-item list-group-item-action active" aria-current="true">
-          <h3>Sillas Economicas</h3>
-        </a>
-        <div *ngFor="let prod of silla" class="card col-md-4" style="width: 18rem;">
-          <img [src]="prod.imagePath" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">{{prod.Name}}</h5>
-            <p class="card-text">{{prod.Description}}</p>
-            <a (click)="detalles(''+prod.id)" class="btn btn-primary">Ver detalles de renta</a>
-          </div>
-        </div>
-
+      <div class="container">
         <div class="row justify-content-around">
-          <a class="list-group-item list-group-item-action active" aria-current="true">
-            <h3>Mesas Economicas</h3>
+          <a
+            class="list-group-item list-group-item-action active"
+            aria-current="true"
+          >
+            <h3>Sillas Economicas</h3>
           </a>
-          <div *ngFor="let prod of _mesa" class="card col-md-4" style="width: 18rem;">
-            <img [src]="prod.imagePath" class="card-img-top" alt="">
+          <div
+            *ngFor="let prod of silla"
+            class="card col-md-4"
+            style="width: 18rem"
+          >
+            <img [src]="prod.imagePath" class="card-img-top" alt="" />
             <div class="card-body">
-              <h5 class="card-title">{{prod.Name}}</h5>
-              <p class="card-text">{{prod.Description}}</p>
-              <a class="btn btn-primary" (click)="detalles(''+prod.id)">Ver detalles de renta</a>
+              <h5 class="card-title">{{ prod.Name }}</h5>
+              <p class="card-text">{{ prod.Description }}</p>
+              <a (click)="detalles('' + prod.id)" class="btn btn-primary"
+                >Ver detalles de renta</a
+              >
+            </div>
+          </div>
+
+          <div class="row justify-content-around">
+            <a
+              class="list-group-item list-group-item-action active"
+              aria-current="true"
+            >
+              <h3>Mesas Economicas</h3>
+            </a>
+            <div
+              *ngFor="let prod of _mesa"
+              class="card col-md-4"
+              style="width: 18rem"
+            >
+              <img [src]="prod.imagePath" class="card-img-top" alt="" />
+              <div class="card-body">
+                <h5 class="card-title">{{ prod.Name }}</h5>
+                <p class="card-text">{{ prod.Description }}</p>
+                <a class="btn btn-primary" (click)="detalles('' + prod.id)"
+                  >Ver detalles de renta</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div [hidden]="mesa">
-    <div class="container">
-      <a class="list-group-item list-group-item-action active" aria-current="true">
-        <h1>Mesas</h1>
-      </a>
-      <div class="row justify-content-around">
-        <div *ngFor="let prod of mesas" class="card col-md-4" style="width: 18rem;">
-          <img [src]="prod.imagePath" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">{{prod.Name}}</h5>
-            <p class="card-text">{{prod.Description}}</p>
-            <a class="btn btn-primary" (click)="detalles(''+prod.id)">Ver detalles de renta</a>
+    <div>
+      <div class="container">
+        <a
+          class="list-group-item list-group-item-action active"
+          aria-current="true"
+        >
+          <h1>Inflables</h1>
+        </a>
+        <div class="row justify-content-around">
+          <div class="card col-md-4" style="width: 18rem">
+            <img src="assets/img/silla.png" class="card-img-top" alt="" />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a class="btn btn-primary">Go somewhere</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div [hidden]="sill">
-    <div class="container">
-      <a class="list-group-item list-group-item-action active" aria-current="true">
-        <h1>Sillas</h1>
-      </a>
-      <div class="row justify-content-around">
-        <div *ngFor="let silla of sillas " class="card col-md-4" style="width: 18rem;">
-          <img [src]="silla.imagePath" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">{{silla.Name}}</h5>
-            <p class="card-text">{{silla.Description}}</p>
-            <a class="btn btn-primary" (click)="detalles(''+silla.id)">Ver detalles de renta</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div [hidden]="ador">
-    <div class="container">
-      <a class="list-group-item list-group-item-action active" aria-current="true">
-        <h1>Adornos</h1>
-      </a>
-      <div class="row justify-content-around">
-        <div *ngFor="let adorno of adornos " class="card col-md-4" style="width: 18rem;">
-          <img [src]="adorno.imagePath" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">{{adorno.Name}}</h5>
-            <p class="card-text">{{adorno.Description}}</p>
-            <a class="btn btn-primary" (click)="detalles(''+adorno.id)">Ver detalles de renta</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div [hidden]="infla">
-    <div class="container">
-      <a class="list-group-item list-group-item-action active" aria-current="true">
-        <h1>Inflables</h1>
-      </a>
-      <div class="row justify-content-around">
-        <div class="card col-md-4" style="width: 18rem;">
-          <img src="assets/img/silla.png" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <img src="assets/silla.png" alt="">
-</body>
-
+    <img src="assets/silla.png" alt="" />
+  </body>
 </html>

@@ -1,6 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Product, Type } from 'src/app/models/product/product.module';
-import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.service';
 import { ProductsService } from 'src/app/services/products.service';
 import * as CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
@@ -11,11 +10,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit, DoCheck {
   secretKey = 'YourSecretKeyForEncryption&Descryption';
-  home = false;
-  mesa = false;
-  sill = true;
-  ador = true;
-  infla = true;
   url = 'http://localhost:4400/';
   silla: Product[] = [];
   sillaRandom: Product[] = [];
@@ -27,29 +21,19 @@ export class HomeComponent implements OnInit, DoCheck {
   adornoRandom: Product[] = [];
   adornos: Product[] = [];
   constructor(
-    private mostrarCatalogoService: MostrarCatalogoService,
     private productsService: ProductsService,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.getsillasHome('silla');
-    this.getProductsType('silla');
     this.getsillasHome('mesa');
-    this.getProductsType('mesa');
     this.getsillasHome('adorno');
-    this.getProductsType('adorno');
-    this.mostrarCatalogoService.Mostrab(false)
-  }
-  se() {
-    this.home = this.mostrarCatalogoService.estadoHome();
-    this.mesa = this.mostrarCatalogoService.estadoMesa();
-    this.sill = this.mostrarCatalogoService.estadoSill();
-    this.infla = this.mostrarCatalogoService.estadoInfla();
-    this.ador = this.mostrarCatalogoService.estadoAdor();
+    
+    
   }
   ngDoCheck() {
-    this.se();
+    
   }
   getsillasHome(typ: string) {
     const type: Type = {

@@ -1,11 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div [hidden]="mostrar" class="container-fluid">
     <a class="navbar-brand hola" (click)="mostrarCatalogo()">Dofest</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div  class="collapse navbar-collapse hola1 justify-content-end" id="navbarNav">
+    <div
+      class="collapse navbar-collapse hola1 justify-content-end"
+      id="navbarNav"
+    >
       <ul class="navbar-nav">
         <li class="nav-item" (click)="mostrarCatalogo()">
           <a class="nav-link hola2" (click)="mostrarCatalogo()">Home</a>
@@ -23,17 +33,30 @@
           <a class="nav-link hola2" (click)="mostrarMesas()">Mesas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link hola2" (click)="mostrarCarrito()">
-            <mat-icon aria-hidden="false"><span class="material-symbols-outlined">
+          <a class="nav-link hola2">
+            <mat-icon
+              (click)="mostrarCarrito()"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
+              [matBadge]="total"
+              aria-hidden="false"
+              ><span class="material-symbols-outlined">
                 local_shipping
-              </span></mat-icon>
+              </span></mat-icon
+            >
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link hola2" >
-            <mat-icon  mat-icon-button [matMenuTriggerFor]="menu" aria-hidden="false"><span class="material-symbols-sharp">
-              account_circle
-              </span></mat-icon>
+          <a class="nav-link hola2">
+            <mat-icon
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-hidden="false"
+              ><span class="material-symbols-sharp">
+                account_circle
+              </span></mat-icon
+            >
           </a>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="salir()">
@@ -46,4 +69,195 @@
     </div>
   </div>
 </nav>
+<div
+  class="offcanvas offcanvas-end w-auto"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+      (click)="mostrarCatalogo()"
+    ></button>
+  </div>
+  <div class="offcanvas-header">
+    <div class="d-flex justify-content-start">
+      <div>
+        <p class="mb-1">Shopping cart</p>
+        <p class="mb-0">You have 4 items in your cart</p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-start">
+      <div>
+        <p class="mb-0">
+          <span class="text-muted">Sort by:</span>
+          <a class="text-body">price <i class="fas fa-angle-down mt-1"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas-body">
+    <div
+      class="row scrollspy-example"
+      data-bs-spy="scroll"
+      data-bs-offset="0"
+      tabindex="0"
+    >
+      <div class="col-md-7">
+        <div *ngFor="let item of carga" class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+                <div>
+                  <img
+                    [src]="item.UrlImage"
+                    class="img-fluid rounded-3"
+                    alt="Shopping item"
+                    style="width: 65px"
+                  />
+                </div>
+                <div class="ms-3">
+                  <h5>{{ item.Name }}</h5>
+                  <p class="small mb-0">{{ item.Description }}</p>
+                </div>
+              </div>
+              <div class="d-flex flex-row align-items-center">
+                <div style="width: 50px">
+                  <h5 class="fw-normal mb-0">{{ item.Amount }}</h5>
+                </div>
+                <div style="width: 80px">
+                  <h5 class="mb-0">${{ item.Total }}</h5>
+                </div>
+                <button style="color: #cecece; outline: nano; border: none">
+                  <i
+                    data-bs-dismiss="offcanvas"
+                    (click)="detalle(item.IdProducts)"
+                    class="fas fa-pencil-alt"
+                  ></i>
+                </button>
+                <button style="color: #cecece; outline: nano; border: none">
+                  <i
+                    (click)="eliminar(item.IdProducts)"
+                    class="fas fa-trash-alt"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card bg-primary text-white rounded-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="mb-0">Detalle de orden</h3>
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                class="img-fluid rounded-3"
+                style="width: 45px"
+                alt="Avatar"
+              />
+            </div>
+            Lena el siguiente formulario para realizar tu renta
+            <div id="map"></div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Nombre</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                [autocomplete]="localst()"
+                placeholder="Nombre completo"
+                [(ngModel)]="Nombre"
+              />
+            </div>
+            Direccion
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Municipio</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                [autocomplete]="localst()"
+                placeholder="Munnicipio"
+                [(ngModel)]="Municipio"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Comunidad</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                [autocomplete]="localst()"
+                placeholder="Comunidad"
+                [(ngModel)]="Comunidad"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Numero del hogar</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                [autocomplete]="localst()"
+                placeholder="#180"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >telefono</label
+              >
+              <input
+                type="tel"
+                pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"
+                class="form-control"
+                [autocomplete]="localst()"
+                placeholder="(418) 144-5463"
+                [(ngModel)]="tel"
+              />
+            </div>
+            <div claas="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Dias de renta</label
+              >
+              <p-calendar
+                inputId="basic"
+                class="form-control"
+                [(ngModel)]="rangeDates"
+              ></p-calendar>
+            </div>
+            <div class="col">
+              Dias de renta
+              <div class="container_1">
+                <input
+                  [autocomplete]="resume()"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="dias"
+                />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between mb-4">
+              <p class="mb-2">Total</p>
+              <p class="mb-2">${{ totalPrecio }}</p>
+            </div>
+
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>

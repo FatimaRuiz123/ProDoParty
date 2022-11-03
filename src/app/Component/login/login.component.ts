@@ -18,7 +18,7 @@ import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.servic
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  Autorice = false;
+  Autorice = true;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds = 5;
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
   
 
   alert(text: string) {
-    this.snackBar.open('Llena el campo ' + text, '', {
+    this.snackBar.open('' + text, '', {
       duration: 2000,
     });
   }

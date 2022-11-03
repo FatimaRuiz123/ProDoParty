@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { CalendarModule } from 'primeng/calendar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,10 @@ import { CartComponent } from './Component/cart/cart.component';
 import { DetallesComponent } from './Component/detalles/detalles.component';
 import { LoginComponent } from './Component/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SillaComponent } from './Component/silla/silla.component';
+import { MesaComponent } from './Component/mesa/mesa.component';
+import { AdornoComponent } from './Component/adorno/adorno.component';
+import { InflableComponent } from './Component/inflable/inflable.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,10 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     DetallesComponent,
     LoginComponent,
+    SillaComponent,
+    MesaComponent,
+    AdornoComponent,
+    InflableComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +46,9 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatMenuModule,
     CalendarModule,
-    NzBadgeModule
-     
+    NzBadgeModule,
+    NgxPayPalModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

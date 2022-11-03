@@ -1,18 +1,29 @@
-.hola{
+.hola {
   font-weight: 400;
   text-align: center;
-  font-size:20px;
-  font-color:rgb(203, 77, 77);
+  font-size: 20px;
+  flood-color: rgb(203, 77, 77);
 }
-.hola1{
+.hola1 {
   font-weight: 400;
-  font-size:20px;
-
+  font-size: 20px;
 }
-.hola2{
-text-align: right;
+.hola2 {
+  text-align: right;
 }
-.jl{
+.jl {
   position: absolute;
   margin: left 200px;
 }
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+#map{
+  position: absolute;
+    width: 90px;
+    margin-left: 3%;
+    height: 180px;
+}
+.map-container {width: 100%;height: 100%;position: absolute;}
