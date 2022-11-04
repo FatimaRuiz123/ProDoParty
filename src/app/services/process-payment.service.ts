@@ -3,12 +3,11 @@ import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { Dta, Order, OrderProduct } from '../models/order/order.module';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartService } from './cart.service';
+import { GetCartProductsService } from './getCartProducts.service';
 import { Cart, CartCostmer } from '../models/cart/cart.module';
-import { Product } from '../models/product/product.module';
 import { OrderService } from './order.service';
-import { AppComponent } from '../app.component';
-import { info } from 'console';
+import { DeleteCartProductsService } from './deleteCartProducts.service';
+import { UpdateCartProductsService } from './updateCartProducts.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,37 +15,31 @@ import { info } from 'console';
 export class ProcessPaymentService {
   cargaProduct: OrderProduct[] = [];
   user = '' + localStorage.getItem('user');
-  cartItems = [];
   totalPrecio = 0;
-  Nombre='';
-  Municipio='';
-  Comunidad='';
-  Numero='';
-  tel='';
-  rangeDates!:Date;
-  dias= 0;
-  producto = {
-    descripcion: 'producto en venta',
-    precio: 20.0,
-    img: 'imagen de tu producto',
-  };
+  nombre = '';
+  municipio = '';
+  comunidad = '';
+  numero = '';
+  tel = '';
+  rangeDates!: Date;
+  dias = 0;
   payPalConfig?: IPayPalConfig;
 
   constructor(
-    private modalService: NgbModal,
     private snackBar: MatSnackBar,
-    private cartService: CartService,
+    private getCartProductsService: GetCartProductsService,
     private orderService: OrderService,
+    private deleteCartProductsService: DeleteCartProductsService,
+    private updateCartProductsService: UpdateCartProductsService
   ) {}
-  setdate(date:Dta){
-    this.Nombre = date.Nombre;
-    this.Municipio = date.Municipio;
-    this.Comunidad = date.Comunidad;
-    this.Numero = date.Numero;
+  setDate(date: Dta) {
+    this.nombre = date.Nombre;
+    this.municipio = date.Municipio;
+    this.comunidad = date.Comunidad;
+    this.numero = date.Numero;
     this.tel = date.tel;
     this.rangeDates = date.rangeDates;
     this.dias = Number(date.dias);
-
   }
 
   initConfig() {
@@ -70,7 +63,6 @@ export class ProcessPaymentService {
                   },
                 },
               },
-              
             },
           ],
         },
@@ -82,22 +74,20 @@ export class ProcessPaymentService {
         layout: 'vertical',
       },
       onApprove: (data, actions) => {
-        console.log(
-          'onApprove - transaction was approved, but not authorized',
-          data,
-          actions
-        );
-        actions.order.get()        
-         .then((details:any) => {
-          if(details){
-            console.log('jnvhfvyfbv')
-            const data: Order={
+        // console.log(
+        //   'onApprove - transaction was approved, but not authorized',
+        //   data,
+        //   actions
+        // );
+        actions.order.get().then((details: any) => {
+          if (details) {
+            const data: Order = {
               Status: 'En proseso',
-              FullNameUser: this.Nombre,
+              FullNameUser: this.nombre,
               Paid: true,
-              Municipio: this.Municipio,
-              Comunidad: this.Comunidad,
-              Numero: this.Numero,
+              Municipio: this.municipio,
+              Comunidad: this.comunidad,
+              Numero: this.numero,
               Email: 'Nombre',
               Telefone: this.tel,
               DateDeliver: new Date(),
@@ -105,20 +95,24 @@ export class ProcessPaymentService {
               Products: this.cargaProduct,
               IdCustomer: this.user,
               Dias: this.dias,
-              TotalPrecio: this.totalPrecio
-            }
-            this.orderService.postOrder(data).subscribe((mesaje:any)=>{
-              console.log(mesaje)
-            })
+              TotalPrecio: this.totalPrecio,
+            };
+            this.orderService.postOrder(data).subscribe((mesaje: any) => {
+              const l = '' + localStorage.getItem('idCart');
+              this.deleteCartProductsService
+                .deleteCart(l)
+                .subscribe((mensaje: any) => {});
+              this.cargaAnterior();
+            });
           }
-        console.log('onApprove - you can get full order details inside onApprove: ', details);
-         });
+          // console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
       },
       onClientAuthorization: (data) => {
-        console.log(
-          'onClientAuthorization - you should probably inform your server about completed transaction at this point',
-          JSON.stringify(data)
-        );
+        // console.log(
+        //   'onClientAuthorization - you should probably inform your server about completed transaction at this point',
+        //   JSON.stringify(data)
+        // );
         // this.openModal(
         //   data.purchase_units[0].items,
         //   data.purchase_units[0].amount.value
@@ -162,7 +156,7 @@ export class ProcessPaymentService {
   verCargaProduct() {
     return this.cargaProduct;
   }
-  setPrecio(precio: number){
+  setPrecio(precio: number) {
     this.totalPrecio = precio;
   }
   verPrecioTotal() {
@@ -179,7 +173,7 @@ export class ProcessPaymentService {
     const l: CartCostmer = {
       IdCustomer: this.user,
     };
-    this.cartService.getCart(l).subscribe((cart: any) => {
+    this.getCartProductsService.getCart(l).subscribe((cart: any) => {
       if (cart[0] != undefined) {
         localStorage.setItem('idCart', cart[0]._id);
         const products = cart[0].Products;
@@ -192,7 +186,7 @@ export class ProcessPaymentService {
       }
     });
   }
-  eliminar(Id: string) {
+  eliminarProduct(Id: string) {
     const l = '' + localStorage.getItem('idCart');
     if (this.cargaProduct.length > 1) {
       var elementIndex = this.cargaProduct.findIndex(
@@ -203,10 +197,15 @@ export class ProcessPaymentService {
         IdCustomer: this.user,
         Products: this.cargaProduct,
       };
-      this.cartService.ubdateCart(l, cart).subscribe((mensaje: any) => {});
+      this.updateCartProductsService
+        .ubdateCart(l, cart)
+        .subscribe((mensaje: any) => {});
+      this.cargaAnterior();
     } else {
-      this.cartService.deleteCart(l).subscribe((mensaje: any) => {});
+      this.deleteCartProductsService
+        .deleteCart(l)
+        .subscribe((mensaje: any) => {});
+      this.cargaAnterior();
     }
-    this.cargaAnterior();
   }
 }

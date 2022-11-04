@@ -3,6 +3,7 @@ import { Product, Type } from 'src/app/models/product/product.module';
 import { ProductsService } from 'src/app/services/products.service';
 import * as CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
+import { MostrarCatalogoService } from 'src/app/services/mostrar-catalogo.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,14 +23,15 @@ export class HomeComponent implements OnInit, DoCheck {
   adornos: Product[] = [];
   constructor(
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private mostrarCatalogoService: MostrarCatalogoService
   ) {}
 
   ngOnInit() {
     this.getsillasHome('silla');
     this.getsillasHome('mesa');
     this.getsillasHome('adorno');
-    
+    this.mostrarCatalogoService.Mostrab(false)
     
   }
   ngDoCheck() {

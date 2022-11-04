@@ -1,12 +1,12 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { MostrarCatalogoService } from './services/mostrar-catalogo.service';
-import { nav } from './models/model-nav/model-nav.module';
 import { Router } from '@angular/router';
 import { ProcessPaymentService } from './services/process-payment.service';
 import { IPayPalConfig } from 'ngx-paypal';
 import { OrderProduct, Dta } from './models/order/order.module';
-import { CartService } from './services/cart.service';
 import { Cart } from './models/cart/cart.module';
+import { UpdateCartProductsService } from './services/updateCartProducts.service';
+import { SetCartProductsService } from './services/setCartProducts.service';
 
 @Component({
   selector: 'app-root',
@@ -26,30 +26,31 @@ export class AppComponent implements OnInit, DoCheck {
   user = '' + localStorage.getItem('user');
   carga: OrderProduct[] = [];
   mostrar = false;
-  dias = 0;
+  dias = 1;
   totalObjet = 0;
   public payPalConfig?: IPayPalConfig;
   constructor(
     private mostrarCatalogoService: MostrarCatalogoService,
     private router: Router,
-    private processPaymentService: ProcessPaymentService,
+    private updateCartProductsService: UpdateCartProductsService,
     private ProcessPaymentService: ProcessPaymentService,
-    private cartService: CartService
+    private setCartProductsService: SetCartProductsService
+
   ) {}
   ngDoCheck() {
     this.mostrar = this.mostrarCatalogoService.estadoButton();
-    this.total = this.processPaymentService.totalProduct();
-    this.carga = this.processPaymentService.verCargaProduct();
-    this.totalPrecio = this.processPaymentService.verPrecioTotal();
-    this.totalObjet = this.processPaymentService.totalProduct();
+    this.total = this.ProcessPaymentService.totalProduct();
+    this.carga = this.ProcessPaymentService.verCargaProduct();
+    this.totalPrecio = this.ProcessPaymentService.verPrecioTotal();
+    this.totalObjet = this.ProcessPaymentService.totalProduct();
   }
 
   ngOnInit() {
+    this.mostrarCatalogoService.Mostrab(false);
     if (localStorage.getItem('user') === '') {
     }
     this.payPalConfig = this.ProcessPaymentService.initConfig();
-    this.processPaymentService.cargaAnterior();
-    this.mostrarCatalogoService.Mostrab(false)
+    this.ProcessPaymentService.cargaAnterior();
   }
   mostrarCatalogo() {
     
@@ -79,9 +80,8 @@ export class AppComponent implements OnInit, DoCheck {
         IdCustomer: this.user,
         Products: this.carga,
       };
-      console.log(this.carga)
        if (this.totalObjet >=1){
-         this.cartService.ubdateCart(l, cart).subscribe((mensaje: any) => {});
+         this.updateCartProductsService.ubdateCart(l, cart).subscribe((mensaje: any) => {});
        }
       
     } else {
@@ -89,9 +89,9 @@ export class AppComponent implements OnInit, DoCheck {
         IdCustomer: this.user,
         Products: this.carga,
       };
-      this.cartService.postCart(cart).subscribe((mensaje: any) => {
+      this.setCartProductsService.postCart(cart).subscribe((mensaje: any) => {
         if (mensaje != '') {
-          this.processPaymentService.cargaAnterior();
+          this.ProcessPaymentService.cargaAnterior();
         }
       });
     }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, DoCheck {
     this.router.navigateByUrl('/login');
   }
   eliminar(id: string) {
-    this.ProcessPaymentService.eliminar(id);
+    this.ProcessPaymentService.eliminarProduct(id);
   }
   detalle(idPoduct: string){
     localStorage.setItem('idProduct', idPoduct);
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit, DoCheck {
         dias: this.dias
       }
       localStorage.setItem('data', JSON.stringify(dat))
-      this.processPaymentService.setdate(dat)
+      this.ProcessPaymentService.setDate(dat)
     }
     
   }

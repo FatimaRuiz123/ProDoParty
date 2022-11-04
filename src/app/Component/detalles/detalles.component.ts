@@ -13,14 +13,23 @@ import { ProcessPaymentService } from 'src/app/services/process-payment.service'
   templateUrl: './detalles.component.html',
   styleUrls: ['./detalles.component.css'],
 })
-export class DetallesComponent implements OnInit {
+export class DetallesComponent implements OnInit, DoCheck {
   cantidad = 0;
   url = 'http://localhost:4400/';
   product: Product[] = [];
   value: any;
   total = 0;
-    idProduct = localStorage.getItem('idProduct');
-  constructor(private productsService: ProductsService,private snackBar: MatSnackBar,private processPaymentService: ProcessPaymentService) {}
+  idProduct = localStorage.getItem('idProduct');
+  tr= this.idProduct;
+  constructor(private productsService: ProductsService,private snackBar: MatSnackBar,private processPaymentService: ProcessPaymentService) {
+  }
+  ngDoCheck(): void {
+    this.idProduct = localStorage.getItem('idProduct');
+    if (this.tr != this.idProduct){
+      this.getProductId();
+      this.tr = localStorage.getItem('idProduct')
+    }
+  }
   
   ngOnInit() {
     this.getProductId();
@@ -42,7 +51,6 @@ export class DetallesComponent implements OnInit {
         };
 
         this.product[0] = product;
-        console.log(this.product);
       });
   }
   mas() {
@@ -60,7 +68,6 @@ export class DetallesComponent implements OnInit {
     this.total = (Number(this.cantidad) * this.product[0].Price);
   }
   selectChange(select: Date): void {
-    console.log(`Select value: ${select}`);
   }
   agregarCart() {
     if (this.cantidad >= 1) {
