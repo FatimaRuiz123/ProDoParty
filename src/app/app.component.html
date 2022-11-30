@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div [hidden]="mostrar" class="container-fluid">
+<nav  [hidden]="mostrar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div  class="container-fluid">
     <a class="navbar-brand hola" (click)="mostrarCatalogo()">Dofest</a>
     <button
       class="navbar-toggler"
@@ -76,7 +76,7 @@
   aria-labelledby="offcanvasRightLabel"
 >
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+    <h2 class="offcanvas-title" id="offcanvasRightLabel">Camioncito</h2>
     <button
       type="button"
       class="btn-close text-reset"
@@ -86,20 +86,7 @@
     ></button>
   </div>
   <div class="offcanvas-header">
-    <div class="d-flex justify-content-start">
-      <div>
-        <p class="mb-1">Shopping cart</p>
-        <p class="mb-0">You have 4 items in your cart</p>
-      </div>
-    </div>
-    <div class="d-flex justify-content-start">
-      <div>
-        <p class="mb-0">
-          <span class="text-muted">Sort by:</span>
-          <a class="text-body">price <i class="fas fa-angle-down mt-1"></i></a>
-        </p>
-      </div>
-    </div>
+    <div class="d-flex justify-content-start"></div>
   </div>
   <div class="offcanvas-body">
     <div
@@ -179,6 +166,22 @@
               />
             </div>
             Direccion
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Codigo Postal</label
+              >
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
+                  maxlength="5"
+                  class="form-control"
+                  [autocomplete]="localst()"
+                  placeholder="Codio Postal 5 digitos"
+                  [(ngModel)]="codigoPostal"
+                /> 
+                <button class="btn btn-success" (click)="getCodigoPostal()"  style="width: 100%;" type="button">usar</button>
+            </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label"
                 >Municipio</label

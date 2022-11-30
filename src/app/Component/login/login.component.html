@@ -8,9 +8,11 @@
     <title>Document</title>
 </head>
 
-<body style="background-color:rgb(18, 36, 197);" >
+<body style="background-image:url(../../assets/img/fiestas.png);background-position: center top;
+background-size: 100% auto;" >
     
-    <div class="container">
+    <div class="container" style="background-image:url(../../assets/img/iml.png);background-position: center top;
+    background-size: 100% auto;" >
         <div class="backbox">
             <div class="loginMsg">
                 <div class="textcontent">
@@ -22,8 +24,8 @@
             <div class="signupMsg visibility">
                 <div class="textcontent">
                     <p class="title">¿Tienes Cuenta?</p>
-                    <p>Inisia sesión para poder realizar tus rentas.</p>
-                    <button id="switch2">Inisia sesión</button>
+                    <p>Inicia sesión para poder realizar tus rentas.</p>
+                    <button id="switch2">Inicia sesión</button>
                 </div>
             </div>
         </div>
@@ -35,8 +37,9 @@
                 <div class="inputbox" style="margin-top:100px;">
                     <input type="text"[(ngModel)]="e_mail1" name="email" placeholder="  EMAIL">
                     <input type="password" [(ngModel)]="password1" name="password" placeholder="  Contraseña">
+                    <button (click)="log_in()">Iniciar</button>
                 </div>
-                <button (click)="log_in()">Inisiar</button>
+               
             </div>
 
             <div class="signup hide">
