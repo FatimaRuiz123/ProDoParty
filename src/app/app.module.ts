@@ -10,6 +10,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {MatBadgeModule} from '@angular/material/badge';
+import { SidebarModule } from 'primeng/sidebar';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +41,10 @@ import { InflableComponent } from './Component/inflable/inflable.component';
   ],
   imports: [
     BrowserModule,
+    NzModalModule,
+    NzDrawerModule,
+    NzSpinModule,
+    SidebarModule,
     AppRoutingModule,
     NzCalendarModule,
     FormsModule,

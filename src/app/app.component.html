@@ -1,5 +1,5 @@
-<nav  [hidden]="mostrar" class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div  class="container-fluid">
+<nav [hidden]="mostrar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
     <a class="navbar-brand hola" (click)="mostrarCatalogo()">Dofest</a>
     <button
       class="navbar-toggler"
@@ -36,9 +36,6 @@
           <a class="nav-link hola2">
             <mat-icon
               (click)="mostrarCarrito()"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight"
               [matBadge]="total"
               aria-hidden="false"
               ><span class="material-symbols-outlined">
@@ -69,199 +66,236 @@
     </div>
   </div>
 </nav>
-<div
-  class="offcanvas offcanvas-end w-auto"
-  tabindex="-1"
-  id="offcanvasRight"
-  aria-labelledby="offcanvasRightLabel"
->
-  <div class="offcanvas-header">
-    <h2 class="offcanvas-title" id="offcanvasRightLabel">Camioncito</h2>
-    <button
-      type="button"
-      class="btn-close text-reset"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-      (click)="mostrarCatalogo()"
-    ></button>
-  </div>
-  <div class="offcanvas-header">
-    <div class="d-flex justify-content-start"></div>
-  </div>
-  <div class="offcanvas-body">
-    <div
-      class="row scrollspy-example"
-      data-bs-spy="scroll"
-      data-bs-offset="0"
-      tabindex="0"
+<nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="visibleSidebar2"
+      nzPlacement="right"
+      [nzWidth]="800"
+      [nzOffsetY] = "50"
+      nzTitle="Basic Drawer "
+      (nzOnClose)="mostrarCarrito()"
     >
-      <div class="col-md-7">
-        <div *ngFor="let item of carga" class="card mb-3">
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex flex-row align-items-center">
-                <div>
-                  <img
-                    [src]="item.UrlImage"
-                    class="img-fluid rounded-3"
-                    alt="Shopping item"
-                    style="width: 65px"
-                  />
-                </div>
-                <div class="ms-3">
-                  <h5>{{ item.Name }}</h5>
-                  <p class="small mb-0">{{ item.Description }}</p>
-                </div>
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <div style="width: 50px">
-                  <h5 class="fw-normal mb-0">{{ item.Amount }}</h5>
-                </div>
-                <div style="width: 80px">
-                  <h5 class="mb-0">${{ item.Total }}</h5>
-                </div>
-                <button style="color: #cecece; outline: nano; border: none">
-                  <i
-                    data-bs-dismiss="offcanvas"
-                    (click)="detalle(item.IdProducts)"
-                    class="fas fa-pencil-alt"
-                  ></i>
-                </button>
-                <button style="color: #cecece; outline: nano; border: none">
-                  <i
-                    (click)="eliminar(item.IdProducts)"
-                    class="fas fa-trash-alt"
-                  ></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <button type="button" (click)="mostrarCarrito()" class="btn-close" aria-label="Close"></button>
+      <ng-container *nzDrawerContent>
 
-      <div class="col">
-        <div class="card bg-primary text-white rounded-3">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h3 class="mb-0">Detalle de orden</h3>
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                class="img-fluid rounded-3"
-                style="width: 45px"
-                alt="Avatar"
-              />
+        
+        <div class="offcanvas-body">
+          <div
+            class="row scrollspy-example"
+            data-bs-spy="scroll"
+            data-bs-offset="0"
+            tabindex="0"
+          >
+          
+            <div class="col-md-7">
+              <div *ngFor="let item of carga" class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <div>
+                        <img
+                          [src]="item.UrlImage"
+                          class="img-fluid rounded-3"
+                          alt="Shopping item"
+                          style="width: 65px"
+                        />
+                      </div>
+                      <div class="ms-3">
+                        <h5>{{ item.Name }}</h5>
+                        <p class="small mb-0">{{ item.Description }}</p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <div style="width: 50px">
+                        <h5 class="fw-normal mb-0">{{ item.Amount }}</h5>
+                      </div>
+                      <div style="width: 80px">
+                        <h5 class="mb-0">${{ item.Total }}</h5>
+                      </div>
+                      <button style="color: #cecece; outline: nano; border: none">
+                        <i
+                          data-bs-dismiss="offcanvas"
+                          (click)="detalle(item.IdProducts)"
+                          class="fas fa-pencil-alt"
+                        ></i>
+                      </button>
+                      <button style="color: #cecece; outline: nano; border: none">
+                        <i
+                          (click)="eliminar(item.IdProducts)"
+                          class="fas fa-trash-alt"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            Lena el siguiente formulario para realizar tu renta
-            <div id="map"></div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Nombre</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                [autocomplete]="localst()"
-                placeholder="Nombre completo"
-                [(ngModel)]="Nombre"
-              />
-            </div>
-            Direccion
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Codigo Postal</label
-              >
-                <input
-                  type="number"
-                  inputmode="numeric"
-                  pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
-                  maxlength="5"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Codio Postal 5 digitos"
-                  [(ngModel)]="codigoPostal"
-                /> 
-                <button class="btn btn-success" (click)="getCodigoPostal()"  style="width: 100%;" type="button">usar</button>
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Municipio</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                [autocomplete]="localst()"
-                placeholder="Munnicipio"
-                [(ngModel)]="Municipio"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Comunidad</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                [autocomplete]="localst()"
-                placeholder="Comunidad"
-                [(ngModel)]="Comunidad"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Numero del hogar</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                [autocomplete]="localst()"
-                placeholder="#180"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >telefono</label
-              >
-              <input
-                type="tel"
-                pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"
-                class="form-control"
-                [autocomplete]="localst()"
-                placeholder="(418) 144-5463"
-                [(ngModel)]="tel"
-              />
-            </div>
-            <div claas="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Dias de renta</label
-              >
-              <p-calendar
-                inputId="basic"
-                class="form-control"
-                [(ngModel)]="rangeDates"
-              ></p-calendar>
-            </div>
+      
             <div class="col">
-              Dias de renta
-              <div class="container_1">
-                <input
-                  [autocomplete]="resume()"
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="dias"
-                  readonly
-                />
+              <div class="card bg-primary text-white rounded-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="mb-0">Detalle de orden</h3>
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                      class="img-fluid rounded-3"
+                      style="width: 45px"
+                      alt="Avatar"
+                    />
+                  </div>
+                  Lena el siguiente formulario para realizar tu renta
+                  <div id="map"></div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Nombre</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="Nombre completo"
+                      [(ngModel)]="nombre"
+                    />
+                  </div>
+                  Direccion
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Codigo Postal</label
+                    >
+                    <input
+                      #alInputCodigoP
+                      type="number"
+                      inputmode="numeric"
+                      pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
+                      maxlength="5"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="Codio Postal 5 digitos"
+                      [(ngModel)]="codigoPostal"
+                    />
+                    <br />
+                    <button
+                      class="btn btn-success"
+                      (click)="getCodigoPostal()"
+                      style="width: 100%; height: 40px;"
+                      type="button"
+                    >
+                    <div [hidden]="loandingCP1" class="spinner-border spinner-border-sm text-dark" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                      <p [hidden]="loandingCP2">usar</p> 
+                    </button>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Estado</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="Estado"
+                      [(ngModel)]="estado" disabled
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Municipio</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="Municipio"
+                      [(ngModel)]="municipio" disabled
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Comunidad / colonia</label
+                    >
+                    <select
+                      class="form-select form-control"
+                      [(ngModel)]="comunidad"
+                      aria-label=".form-select-lg example"
+                    >
+                      <option selected>Selecciona tu comunidad</option>
+                      <option *ngFor="let com of data">{{ com.nombre }}</option>
+                    </select>
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >calle</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="Calle"
+                      [(ngModel)]="calle"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Numero del hogar</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="#180"
+                      [(ngModel)]="numero"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >telefono</label
+                    >
+                    <input
+                      type="tel"
+                      pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"
+                      class="form-control"
+                      [autocomplete]="localst()"
+                      placeholder="(418) 144-5463"
+                      [(ngModel)]="tel"
+                    />
+                  </div>
+                  <div claas="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Dias de renta</label
+                    >
+                    <p-calendar
+                      inputId="basic"
+                      class="form-control"
+                      [(ngModel)]="rangeDates"
+                    ></p-calendar>
+                  </div>
+                  <div class="col">
+                    Dias de renta
+                    <div class="container_1">
+                      <input
+                        [autocomplete]="resume()"
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="dias"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between mb-4">
+                    <p class="mb-2">Total</p>
+                    <p class="mb-2">${{ totalPrecio }}</p>
+                  </div>
+      
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </div>
               </div>
             </div>
-            <div class="d-flex justify-content-between mb-4">
-              <p class="mb-2">Total</p>
-              <p class="mb-2">${{ totalPrecio }}</p>
-            </div>
-
-            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </ng-container>
+    </nz-drawer>
+
+
 <router-outlet></router-outlet>

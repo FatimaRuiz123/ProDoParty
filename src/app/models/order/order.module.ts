@@ -5,10 +5,12 @@ export interface Order {
   Paid: boolean;
   Municipio: string;
   Comunidad: string;
+  Calle: string;
   Numero: string;
   Email: string;
   Telefone: string;
   DateDeliver: Date;
+  DateEvent: Date;
   DateReturn: Date;
   Dias: Number;
   TotalPrecio: number;
@@ -28,6 +30,7 @@ export interface Dta{
   Nombre: string;
   Municipio:string;
   Comunidad: string;
+  calle: string;
   Numero: string;
   tel: string;
   rangeDates: Date;

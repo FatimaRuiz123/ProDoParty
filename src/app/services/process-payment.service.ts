@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { Dta, Order, OrderProduct } from '../models/order/order.module';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GetCartProductsService } from './getCartProducts.service';
 import { Cart, CartCostmer } from '../models/cart/cart.module';
 import { OrderService } from './order.service';
 import { DeleteCartProductsService } from './deleteCartProducts.service';
 import { UpdateCartProductsService } from './updateCartProducts.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProcessPaymentService {
   cargaProduct: OrderProduct[] = [];
-  user = '' + localStorage.getItem('user');
+  user = ''+localStorage.getItem('user');
   totalPrecio = 0;
   nombre = '';
   municipio = '';
   comunidad = '';
+  calle= '';
   numero = '';
+  e_mail = '';
   tel = '';
   rangeDates!: Date;
+  dateEvent!: Date;
+  dateDeliver!: Date;
   dias = 0;
   payPalConfig?: IPayPalConfig;
 
@@ -30,16 +34,25 @@ export class ProcessPaymentService {
     private getCartProductsService: GetCartProductsService,
     private orderService: OrderService,
     private deleteCartProductsService: DeleteCartProductsService,
-    private updateCartProductsService: UpdateCartProductsService
+    private updateCartProductsService: UpdateCartProductsService,
+    private modal: NzModalService
   ) {}
   setDate(date: Dta) {
     this.nombre = date.Nombre;
     this.municipio = date.Municipio;
     this.comunidad = date.Comunidad;
+    this.calle = date.calle;
     this.numero = date.Numero;
     this.tel = date.tel;
     this.rangeDates = date.rangeDates;
     this.dias = Number(date.dias);
+    const diaA = new Date(date.rangeDates)
+    diaA.setDate(diaA.getDate() - 1)
+    this.dateEvent = diaA;
+    const diaD = new Date(date.rangeDates)
+    diaD.setDate(diaD.getDate() + 1)
+    this.dateDeliver = diaD;
+
   }
 
   initConfig() {
@@ -80,6 +93,8 @@ export class ProcessPaymentService {
         //   actions
         // );
         actions.order.get().then((details: any) => {
+          this.e_mail = localStorage.getItem('e_mail')+'';
+          this.user =  localStorage.getItem('user')+'';
           if (details) {
             const data: Order = {
               Status: 'En proseso',
@@ -88,15 +103,18 @@ export class ProcessPaymentService {
               Municipio: this.municipio,
               Comunidad: this.comunidad,
               Numero: this.numero,
-              Email: 'Nombre',
+              Email: this.e_mail,
               Telefone: this.tel,
-              DateDeliver: new Date(),
+              DateDeliver: this.dateDeliver,
               DateReturn: this.rangeDates,
               Products: this.cargaProduct,
               IdCustomer: this.user,
               Dias: this.dias,
               TotalPrecio: this.totalPrecio,
+              Calle: this.calle,
+              DateEvent: this.dateEvent
             };
+            this.showConfirm();
             this.orderService.postOrder(data).subscribe((mesaje: any) => {
               const l = '' + localStorage.getItem('idCart');
               this.deleteCartProductsService
@@ -126,6 +144,7 @@ export class ProcessPaymentService {
         console.log('OnError', err);
       },
       onClick: (data: any, actions: any) => {
+       
         console.log('onClick', data, actions);
       },
     };
@@ -208,4 +227,13 @@ export class ProcessPaymentService {
       this.cargaAnterior();
     }
   }
+  showConfirm(): void {
+    const modal = this.modal.success({
+      nzTitle: 'This is a notification message',
+      nzContent: 'This modal will be destroyed after 1 second',
+      nzOkText: 'Ok'
+    });
+
+    setTimeout(() => modal.destroy(), 1000);
+}
 }

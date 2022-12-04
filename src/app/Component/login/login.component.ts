@@ -128,6 +128,7 @@ export class LoginComponent implements OnInit {
               if (pass === this.password1) {
                 this.router.navigateByUrl('/home');
                 localStorage.setItem('user',''+user[i]._id)
+                localStorage.setItem('e_mail',''+user[i].E_mail)
               } else this.alert('contraseña incorrecta');
             }else this.alert('Llena el campo contraseña');
           } else this.alert('No se encuentra el gmail intentalo nuevamente');
