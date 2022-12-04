@@ -229,11 +229,12 @@ export class ProcessPaymentService {
   }
   showConfirm(): void {
     const modal = this.modal.success({
-      nzTitle: 'This is a notification message',
-      nzContent: 'This modal will be destroyed after 1 second',
-      nzOkText: 'Ok'
+      nzTitle: 'La operacion se realisado correctamente',
+      nzContent: 'Sea realisado la orden correctamente verifica tu correo para ver los detalled de tu orden ',
+      nzOkText: 'Ok',
+      nzCentered: true
     });
 
-    setTimeout(() => modal.destroy(), 1000);
+    setTimeout(() => modal.destroy(), 3000);
 }
 }

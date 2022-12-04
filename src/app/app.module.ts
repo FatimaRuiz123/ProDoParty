@@ -14,6 +14,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { InflableComponent } from './Component/inflable/inflable.component';
   ],
   imports: [
     BrowserModule,
+    NzDatePickerModule,
     NzModalModule,
     NzDrawerModule,
     NzSpinModule,
