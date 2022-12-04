@@ -171,7 +171,6 @@ export class AppComponent implements OnInit, DoCheck {
         .getPostal(this.codigoPostal)
         .subscribe((codigoP: any) => {
           if (codigoP.estatus === 'si') {
-            this.showConfirm();
             this.loandingCP1 = true;
             this.loandingCP2 = false;
             const inputCodigoP = this.codigoP?.nativeElement;
@@ -209,14 +208,5 @@ export class AppComponent implements OnInit, DoCheck {
   LimpiarDireccio(){
     this.estado = '';
     this.municipio = "";
-  }
-  showConfirm(): void {
-      const modal = this.modal.success({
-        nzTitle: 'This is a notification message',
-        nzContent: 'This modal will be destroyed after 1 second',
-        nzOkText: 'Ok'
-      });
-  
-      setTimeout(() => modal.destroy(), 1000);
   }
 }
