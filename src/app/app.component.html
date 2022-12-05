@@ -1,21 +1,11 @@
 <nav [hidden]="mostrar" class="navbar navbar-expand-lg lgu container-fluid mb-3">
   <div class="container-fluid">
     <a class="navbar-brand hola" (click)="mostrarCatalogo()">🎉 DoFest</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse hola1 justify-content-end"
-      id="navbarNav"
-    >
+    <div class="collapse navbar-collapse hola1 justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item" (click)="mostrarCatalogo()">
           <a class="nav-link hola2" (click)="mostrarCatalogo()">Home</a>
@@ -34,26 +24,18 @@
         </li>
         <li class="nav-item">
           <a class="nav-link hola2">
-            <mat-icon
-              (click)="mostrarCarrito()"
-              [matBadge]="total"
-              aria-hidden="false"
-              ><span class="material-symbols-outlined">
+            <mat-icon (click)="mostrarCarrito()" [matBadge]="total" aria-hidden="false"><span
+                class="material-symbols-outlined">
                 local_shipping
-              </span></mat-icon
-            >
+              </span></mat-icon>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link hola2">
-            <mat-icon
-              mat-icon-button
-              [matMenuTriggerFor]="menu"
-              aria-hidden="false"
-              ><span class="material-symbols-sharp">
+            <mat-icon mat-icon-button [matMenuTriggerFor]="menu" aria-hidden="false"><span
+                class="material-symbols-sharp">
                 account_circle
-              </span></mat-icon
-            >
+              </span></mat-icon>
           </a>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="salir()">
@@ -66,37 +48,19 @@
     </div>
   </div>
 </nav>
-<nz-drawer
-  [nzClosable]="false"
-  [nzVisible]="visibleSidebar2"
-  nzPlacement="right"
-  [nzWidth]="800"
-  nzTitle="Camioncito"
-  [nzExtra]="extra"
-  (nzOnClose)="mostrarCarrito()"  
->
+<nz-drawer [nzClosable]="false" [nzVisible]="visibleSidebar2" nzPlacement="right" [nzWidth]="800" nzTitle="Camioncito"
+  [nzExtra]="extra" (nzOnClose)="mostrarCarrito()">
   <ng-container *nzDrawerContent>
-    <div class="offcanvas-body">
-      <div
-        class="row scrollspy-example"
-        data-bs-spy="scroll"
-        data-bs-offset="0"
-        tabindex="0"
-      >
-        <div class="col-md-7" >
-          Productos a cargar
-
+    <div class="offcanvas-body lgd p-3" style="border-radius: 15px;">
+      <div class="row scrollspy-example" data-bs-spy="scroll" data-bs-offset="0" tabindex="0">
+        <div class="col-md-7">
+          <h4 style="color: aliceblue;"><b>Productos a cargar</b></h4>
           <div *ngFor="let item of carga" class="card mb-3">
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">
                   <div>
-                    <img
-                      [src]="item.UrlImage"
-                      class="img-fluid rounded-3"
-                      alt="Shopping item"
-                      style="width: 65px"
-                    />
+                    <img [src]="item.UrlImage" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px" />
                   </div>
                   <div class="ms-3">
                     <h5>{{ item.Name }}</h5>
@@ -111,17 +75,10 @@
                     <h5 class="mb-0">${{ item.Total }}</h5>
                   </div>
                   <button style="color: #cecece; outline: nano; border: none">
-                    <i
-                      data-bs-dismiss="offcanvas"
-                      (click)="detalle(item.IdProducts)"
-                      class="fas fa-pencil-alt"
-                    ></i>
+                    <i data-bs-dismiss="offcanvas" (click)="detalle(item.IdProducts)" class="fas fa-pencil-alt"></i>
                   </button>
                   <button style="color: #cecece; outline: nano; border: none">
-                    <i
-                      (click)="eliminar(item.IdProducts)"
-                      class="fas fa-trash-alt"
-                    ></i>
+                    <i (click)="eliminar(item.IdProducts)" class="fas fa-trash-alt"></i>
                   </button>
                 </div>
               </div>
@@ -132,174 +89,99 @@
         <div class="col">
           <div class="card lgdt text-white rounded-3">
             <div class="card-body">
-              <div
-                class="d-flex justify-content-between align-items-center mb-4"
-              >
-                <h3 class="mb-0">Detalle de orden</h3>
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                  class="img-fluid rounded-3"
-                  style="width: 45px"
-                  alt="Avatar"
-                />
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0 text-white">Detalle de orden</h3>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" class="img-fluid rounded-3"
+                  style="width: 45px" alt="Avatar" />
               </div>
-              Lena el siguiente formulario para realizar tu renta
+              <p>Llena el siguiente formulario para realizar tu renta</p>
+
               <div id="map"></div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Nombre</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Nombre completo"
-                  [(ngModel)]="nombre"
-                />
-              </div>
-              Direccion
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Codigo Postal</label
-                >
-                <input
-                  #alInputCodigoP
-                  type="number"
-                  inputmode="numeric"
-                  pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"
-                  maxlength="5"
-                  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Codio Postal 5 digitos"
-                  [(ngModel)]="codigoPostal"
-                />
                 <br />
-                <button
-                  class="btn btn-success"
-                  (click)="getCodigoPostal()"
-                  style="width: 100%; height: 40px"
-                  type="button"
-                >
-                  <div
-                    [hidden]="loandingCP1"
-                    class="spinner-border spinner-border-sm text-dark"
-                    role="status"
-                  >
+                <label for="exampleFormControlInput1" class="form-label text-white h6"><b>Nombre</b></label>
+                <input type="email" style="border-radius: 10px; font-size: 12px;"
+                  class="form-control bg-secondary border-0 text-center" [autocomplete]="localst()"
+                  placeholder="Nombre completo" [(ngModel)]="nombre" />
+              </div>
+              <h3 class="mb-0 text-white">Dirección</h3>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-white">Codigo Postal</label>
+                <input #alInputCodigoP type="number" inputmode="numeric"
+                  pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" maxlength="5"
+                  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  style="border-radius: 10px; font-size: 12px;" class="form-control bg-secondary border-0 text-center"
+                  [autocomplete]="localst()" placeholder="Código Postal 5 dígitos" [(ngModel)]="codigoPostal" />
+                <br />
+                <button class="btn btn-primary" (click)="getCodigoPostal()"
+                  style="width: 100%; height: 40px; border-radius: 15px;" type="button">
+                  <div [hidden]="loandingCP1" class="spinner-border spinner-border-sm text-dark" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
                   <p [hidden]="loandingCP2">usar</p>
                 </button>
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Estado</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Estado"
-                  [(ngModel)]="estado"
-                  disabled
-                />
+                <label for="exampleFormControlInput1" class="form-label text-white">Estado</label>
+                <input type="email" class="form-control bg-secondary border-0 text-center"
+                  style="border-radius: 10px; font-size: 12px;" [autocomplete]="localst()" placeholder="Estado"
+                  [(ngModel)]="estado" disabled />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Municipio</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Municipio"
-                  [(ngModel)]="municipio"
-                  disabled
-                />
+                <label for="exampleFormControlInput1" class="form-label text-white">Municipio</label>
+                <input type="email" class="form-control bg-secondary border-0 text-center"
+                  style="border-radius: 10px; font-size: 12px;" [autocomplete]="localst()" placeholder="Municipio"
+                  [(ngModel)]="municipio" disabled />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Comunidad / colonia</label
-                >
-                <select
-                  class="form-select form-control"
-                  [(ngModel)]="comunidad"
-                  aria-label=".form-select-lg example"
-                >
+                <label for="exampleFormControlInput1" class="form-label text-white">Comunidad / colonia</label>
+                <select class="form-select form-control bg-secondary border-0 text-center"
+                  style="border-radius: 10px; font-size: 12px;" [(ngModel)]="comunidad"
+                  aria-label=".form-select-lg example">
                   <option selected>Selecciona tu comunidad</option>
                   <option *ngFor="let com of data">{{ com.nombre }}</option>
                 </select>
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >calle</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="Calle"
-                  [(ngModel)]="calle"
-                />
+                <label for="exampleFormControlInput1" class="form-label text-white">Calle</label>
+                <input type="email" class="form-control bg-secondary border-0 text-center"
+                  style="border-radius: 10px; font-size: 12px;" [autocomplete]="localst()" placeholder="Calle"
+                  [(ngModel)]="calle" />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Numero del hogar</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  [autocomplete]="localst()"
-                  placeholder="#180"
-                  [(ngModel)]="numero"
-                />
+                <label for="exampleFormControlInput1" class="form-label text-white">Número del hogar</label>
+                <input type="email" class="form-control bg-secondary border-0 text-center"
+                  style="border-radius: 10px; font-size: 12px;" [autocomplete]="localst()" placeholder="#180"
+                  [(ngModel)]="numero" />
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >telefono</label
-                >
-                <input
-                  type="tel"
-                  pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"
-                  class="form-control"
-                  maxlength="10"
+                <label for="exampleFormControlInput1" class="form-label text-white">Teléfono</label>
+                <input type="tel" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}"
+                  class="form-control bg-secondary border-0 text-center" maxlength="10"
                   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                  [autocomplete]="localst()"
-                  placeholder="(418) 144-5463"
-                  [(ngModel)]="tel"
-                />
+                  [autocomplete]="localst()" placeholder="(418) 144-5463" [(ngModel)]="tel"
+                  style="border-radius: 10px; font-size: 12px;" />
               </div>
-              <div claas="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Dias de renta</label
-                >
-                <input
-                  type="date"
-                  [(ngModel)]="rangeDates"
-                  class="form-control"
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                />
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-white">Día de renta</label>
+                <input type="date" [(ngModel)]="rangeDates" class="form-control bg-secondary border-0 text-center"
+                  placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+                  style="border-radius: 10px; font-size: 12px;" />
               </div>
-              <div class="col">
-                Dias de renta
-                <div class="container_1">
-                  <input
-                    [autocomplete]="resume()"
-                    type="text"
-                    class="form-control"
-                    [(ngModel)]="dias"
-                    readonly
-                  />
-                </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-white">Días/plazo de renta</label>
+                <input [autocomplete]="resume()" type="text" class="form-control bg-secondary border-0 text-center"
+                  [(ngModel)]="dias" readonly style="border-radius: 10px; font-size: 12px;" />
               </div>
-              <div class="d-flex justify-content-between mb-4">
-                <p class="mb-2">Total</p>
-                <p class="mb-2">${{ totalPrecio }}</p>
-              </div>
-
-              <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+              <span style="font-size:15px" class="badge w-100 pt-4 text-bg-light">
+                <h1>
+                  <span class="badge text-bg-warning w-100">
+                    <b>Total: </b>
+                    <span style="font-size:15px" class="badge text-bg-light">$ {{totalPrecio}}</span>
+                  </span>
+                </h1>
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+              </span>
             </div>
           </div>
         </div>
@@ -308,12 +190,7 @@
   </ng-container>
 </nz-drawer>
 <ng-template #extra>
-  <button
-    type="button"
-    class="btn-close"
-    aria-label="Close"
-    (click)="mostrarCarrito()"
-  ></button>
+  <button type="button" class="btn-close" aria-label="Close" (click)="mostrarCarrito()"></button>
 </ng-template>
 
 <router-outlet></router-outlet>
