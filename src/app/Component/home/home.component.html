@@ -1,139 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-   
-  </head>
 
-  <body>
-    <div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div>
     <!-- Carousel Start -->
     <div class="container-fluid mb-3">
       <div class="row px-xl-5">
-          <div class="col-lg-8">
-              <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                      <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-                      <li data-target="#header-carousel" data-slide-to="1"></li>
-                      <li data-target="#header-carousel" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                      <div class="carousel-item position-relative active" style="height: 430px;" (click)="detalles('' + sillaRandom[0].id)">
-                          <img  [src]="sillaRandom[0].imagePath" >
-                          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                              <div class="p-3" style="max-width: 700px;">
-                                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ sillaRandom[0].Name }}</h1>
-                                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ sillaRandom[0].Description }}</p>
-                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item position-relative" style="height: 430px;" (click)="detalles('' + mesaRandom[0].id)">
-                          <img class="position-absolute w-100 h-100" [src]="mesaRandom[0].imagePath" style="object-fit: contain;">
-                          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                              <div class="p-3" style="max-width: 700px;">
-                                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ mesaRandom[0].Name }}</h1>
-                                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ mesaRandom[0].Description }}</p>
-                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" >Rentar</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item position-relative" style="height: 430px;" (click)="detalles('' + adornoRandom[0].id)">
-                          <img class="position-absolute w-100 h-100" [src]="adornoRandom[0].imagePath" style="object-fit: contain;">
-                          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                              <div class="p-3" style="max-width: 700px;">
-                                  <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ adornoRandom[0].Name }}</h1>
-                                  <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ adornoRandom[0].Description }}</p>
-                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</a>
-                              </div>
-                          </div>
-                      </div>
+        <div class="col-lg-8">
+          <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" aria-current="true"
+                class="active"></button>
+              <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item position-relative active" style="height: 430px;"
+                (click)="detalles('' + sillaRandom[0].id)">
+                <img [src]="sillaRandom[0].imagePath">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                  <div class="p-3" style="max-width: 700px;">
+                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ sillaRandom[0].Name
+                      }}</h1>
+                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ sillaRandom[0].Description }}</p>
+                    <button
+                      class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</button>
                   </div>
+                </div>
               </div>
+              <div class="carousel-item position-relative" style="height: 430px;"
+                (click)="detalles('' + mesaRandom[0].id)">
+                <img [src]="mesaRandom[0].imagePath">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                  <div class="p-3" style="max-width: 700px;">
+                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ mesaRandom[0].Name }}
+                    </h1>
+                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ mesaRandom[0].Description }}</p>
+                    <button
+                      class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item position-relative" style="height: 430px;"
+                (click)="detalles('' + adornoRandom[0].id)">
+                <img [src]="adornoRandom[0].imagePath">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                  <div class="p-3" style="max-width: 700px;">
+                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ adornoRandom[0].Name
+                      }}</h1>
+                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ adornoRandom[0].Description }}</p>
+                    <button
+                      class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-4">
-              <div class="product-offer mb-30" style="height: 200px;" (click)="detalles('' + adornoRandom[0].id)">
-                  <img class="img-fluid" [src]="mesaRandom[0].imagePath" alt="">
-                  <div class="offer-text">
-                      <h6 class="text-white text-uppercase">{{ mesaRandom[0].Description }}</h6>
-                      <h3 class="text-white mb-3">{{ mesaRandom[0].Name }}</h3>
-                      <a href="" class="btn btn-primary">Rentar</a>
-                  </div>
-              </div>
-              <div class="product-offer mb-30" style="height: 200px;" (click)="detalles('' + mesaRandom[0].id)">
-                  <img class="img-fluid" [src]="adornoRandom[0].imagePath" alt="">
-                  <div class="offer-text">
-                      <h6 class="text-white text-uppercase">{{ adornoRandom[0].Description }}</h6>
-                      <h3 class="text-white mb-3">{{ adornoRandom[0].Name }}</h3>
-                      <a href="" class="btn btn-primary">Rentar</a>
-                  </div>
-              </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="product-offer mb-30" style="height: 200px;" (click)="detalles('' + adornoRandom[0].id)">
+            <img class="img-fluid" [src]="mesaRandom[0].imagePath" alt="">
+            <div class="offer-text">
+              <h6 class="text-white text-uppercase">{{ mesaRandom[0].Description }}</h6>
+              <h3 class="text-white mb-3">{{ mesaRandom[0].Name }}</h3>
+              <a class="btn btn-primary">Rentar</a>
+            </div>
           </div>
+          <div class="product-offer mb-30" style="height: 200px;" (click)="detalles('' + mesaRandom[0].id)">
+            <img class="img-fluid" [src]="adornoRandom[0].imagePath" alt="">
+            <div class="offer-text">
+              <h6 class="text-white text-uppercase">{{ adornoRandom[0].Description }}</h6>
+              <h3 class="text-white mb-3">{{ adornoRandom[0].Name }}</h3>
+              <a class="btn btn-primary">Rentar</a>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
-  <!-- Carousel End -->
-
-  <!-- Products Start -->
-  <div class="container-fluid pt-5 pb-3" style="background-color: #FFD333;">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="pr-3">Sillas</span></h2>
-    <div class="row px-xl-5">
-      <div
-            *ngFor="let prod of silla"
-            class="col-lg-3 col-md-4 col-sm-6 pb-1"
-          >
-          <div class="product-item bg-light mb-4">
-            <div class="product-img position-relative overflow-hidden">
-              <img [src]="prod.imagePath" class="img-fluid w-100" alt="" />
-              <div class="product-action">
-                <a (click)="detalles('' + prod.id)" class="btn btn-primary" class="btn btn-outline-dark" >Ver Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
-            </div>
-            <div class="text-center py-4">
-                <a class="h6 text-decoration-none text-truncate">{{ prod.Name }}</a>
-                <div class="d-flex align-items-center justify-content-center mt-2">
-                  <h5>{{ prod.Description }}</h5><h6 class="text-muted ml-2"><del></del></h6>
-              </div>
-                
-              </div>
-            </div>            
-          </div>
-            
-          </div>
-        
     </div>
-</div>
-<div class="container-fluid pt-5 pb-3" style="background-color: #FFD333;">
-  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class=" pr-3">Mesas</span></h2>
-  <div class="row px-xl-5">
-    <div
-          *ngFor="let prod of _mesa"
-          class="col-lg-3 col-md-4 col-sm-6 pb-1"
-        >
-        <div class="product-item bg-light mb-4">
-          <div class="product-img position-relative overflow-hidden">
-            <img [src]="prod.imagePath" class="img-fluid w-100" alt="" />
-            <div class="product-action">
-              <a (click)="detalles('' + prod.id)" class="btn btn-primary" class="btn btn-outline-dark">Ver Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
-          </div>
-          <div class="text-center py-4">
-              <a class="h6 text-decoration-none text-truncate">{{ prod.Name }}</a>
-              <div class="d-flex align-items-center justify-content-center mt-2">
-                <h5>{{ prod.Description }}</h5><h6 class="text-muted ml-2"><del></del></h6>
-            </div>
-              
-            </div>
-          </div>            
-        </div>
-          
-        </div>
-      
-  </div>
-</div>
-<!-- Products End -->
+    <!-- Carousel End -->
 
+    <!-- Products Start -->
+    <div class="lgd">
+      <div class="container-fluid pt-5 pb-3 ">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="color:white;"><span
+            class="pr-3">Sillas</span></h2>
+        <div class="row px-xl-5">
+          <div *ngFor="let prod of silla" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4" (click)="detalles('' + prod.id)"> 
+              <div class="product-img position-relative overflow-hidden">
+                <img [src]="prod.imagePath" class="img-fluid w-100" alt="" />
+                <div class="product-action">
+                  <a class="btn btn-primary" class="btn btn-outline-dark">Ver
+                    Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                </div>
+                <div class="text-center py-4">
+                  <a class="h6 text-decoration-none text-truncate">{{ prod.Name }}</a>
+                  <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>{{ prod.Description }}</h5>
+                    <h6 class="text-muted ml-2"><del></del></h6>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="color:white;"><span
+            class="pr-3">Mesas</span></h2>
+        <div class="row px-xl-5">
+          <div *ngFor="let prod of _mesa" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4" (click)="detalles('' + prod.id)">
+              <div class="product-img position-relative overflow-hidden">
+                <img [src]="prod.imagePath" class="img-fluid w-100" alt="" />
+                <div class="product-action">
+                  <a class="btn btn-primary" class="btn btn-outline-dark">Ver
+                    Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                </div>
+                <div class="text-center py-4">
+                  <a class="h6 text-decoration-none text-truncate">{{ prod.Name }}</a>
+                  <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>{{ prod.Description }}</h5>
+                    <h6 class="text-muted ml-2"><del></del></h6>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="color:white;"><span
+            class=" pr-3">Adornos</span></h2>
+        <div class="row px-xl-5">
+          <div *ngFor="let prod of adorno" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4" (click)="detalles('' + prod.id)" >
+              <div class="product-img position-relative overflow-hidden">
+                <img [src]="prod.imagePath" class="img-fluid w-100" alt="" />
+                <div class="product-action">
+                  <a class="btn btn-primary" class="btn btn-outline-dark">Ver
+                    Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                </div>
+                <div class="text-center py-4">
+                  <a class="h6 text-decoration-none text-truncate">{{ prod.Name }}</a>
+                  <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>{{ prod.Description }}</h5>
+                    <h6 class="text-muted ml-2"><del></del></h6>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
     </div>
-  </body>
-  
+    <!-- Products End -->
+
+  </div>
+</body>
+
 </html>

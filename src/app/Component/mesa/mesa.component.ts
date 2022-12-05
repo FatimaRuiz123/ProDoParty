@@ -6,32 +6,36 @@ import { ProductsService } from 'src/app/services/products.service';
 @Component({
   selector: 'app-mesa',
   template: `
-    <div>
-      <div class="container">
-        <a
-          class="list-group-item list-group-item-action active"
-          aria-current="true"
-        >
-          <h1>Mesas</h1>
-        </a>
-        <div class="row justify-content-around">
-          <div
-            *ngFor="let prod of mesas"
-            class="card col-md-4"
-            style="width: 18rem;"
-          >
-            <img [src]="prod.imagePath" class="card-img-top" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">{{ prod.Name }}</h5>
-              <p class="card-text">{{ prod.Description }}</p>
-              <a class="btn btn-primary" (click)="detalles('' + prod.id)"
-                >Ver detalles de renta</a
-              >
+  <div class="lgd">
+    <div class="container-fluid pt-5 pb-3 ">
+      <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="color:white;"><span
+          class="pr-3">Mesas</span></h2>
+      <div class="row px-xl-5">
+        <div *ngFor="let mesa of mesas" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+          <div class="product-item bg-light mb-4" (click)="detalles('' + mesa.id)">
+            <div class="product-img position-relative overflow-hidden">
+              <img [src]="mesa.imagePath" class="img-fluid w-100" alt="" />
+              <div class="product-action">
+                <a class="btn btn-primary" class="btn btn-outline-dark">Ver
+                  Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+              </div>
+              <div class="text-center py-4">
+                <a class="h6 text-decoration-none text-truncate">{{ mesa.Name }}</a>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                  <h5>{{ mesa.Description }}</h5>
+                  <h6 class="text-muted ml-2"><del></del></h6>
+                </div>
+
+              </div>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
+  </div>
+  <div class="container-fluid pb-3 "></div>
   `,
   styleUrls: ['./mesa.component.css'],
 })

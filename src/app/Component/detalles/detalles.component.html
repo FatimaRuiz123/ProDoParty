@@ -9,7 +9,147 @@
 </head>
 
 <body>
-    <div class="contenedor">
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid pb-5">
+        <div class="row px-xl-5">           
+
+            <div class="col h-auto mb-30">
+                <div class="h-100 bg-light p-30 lgdt">
+                    <div class="row">
+                        <div class="col-lg-5 h-auto p-5">
+                            <div id="product-carousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner bg-light" style="border-radius: 15px;">
+                                    <div class="carousel-item active" >
+                                        <img [src]="product[0].imagePath" alt="" class="w-100 h-100" >
+                                        <!-- <img class="w-100 h-100" src="img/product-1.jpg" alt="Image"> -->
+                                    </div>
+                                    <div class="carousel-item ">
+                                        <img [src]="product[0].imagePath" alt="" class="w-100 h-100">
+                                        <!-- <img class="w-100 h-100" src="img/product-1.jpg" alt="Image"> -->
+                                    </div>
+                                    <div class="carousel-item ">
+                                        <img [src]="product[0].imagePath" alt="" class="w-100 h-100">
+                                        <!-- <img class="w-100 h-100" src="img/product-1.jpg" alt="Image"> -->
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#product-carousel"
+                                    data-bs-slide="prev" style="color: black;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#product-carousel"
+                                    data-bs-slide="next" style="color: black;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 h-auto p-4"
+                            style="justify-content: center; align-items: center; border-radius: 15px;  ">
+                            <h1 style="color: aliceblue;"><b>{{product[0].Name}}</b></h1>
+                            <div class="d-flex mb-3">
+                                <small class="pt-0"><span class="badge text-bg-dark" style="font-size: 10px;">
+                                        <b>&nbsp;&nbsp;Unidades disponibles: </b>
+                                        <span class="badge text-bg-light"
+                                            style="font-size: 12px;">{{product[0].TotalStock}}</span></span></small>
+                            </div>
+
+                            <h2><span class="badge text-bg-warning"><b>Costo unitario por día: </b><span
+                                        style="font-size:15px" class="badge text-bg-light">$
+                                        {{product[0].Price}}</span></span></h2>
+
+                            <div class="col h-50 p-3"
+                                style="background-color: aliceblue; display:flex; justify-content: center; align-items: center; border-radius: 15px; ">
+                                <small>{{product[0].Description}}</small>
+                            </div>
+                            <div class="d-flex pt-4" style="color: aliceblue; justify-content: left;">
+                                <strong class=" mr-2"> &nbsp; Compartir en:</strong>
+                                <div class="d-inline-flex">
+                                    <a class="text-white px-2" href="">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a class="text-white px-2" href="">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a class="text-white px-2" href="">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a class="text-white px-2" href="">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 ml-5 mt-5 h-100 p-7"
+                            style="background-color: aliceblue; text-align:center;justify-content: center; align-items: center; border-radius: 15px;  ">
+                            <h2>
+                                <span class="badge text-bg-warning">
+                                    <b>Total: </b>
+                                    <span style="font-size:15px" class="badge text-bg-light">$ {{total}}</span>
+                                </span>
+                            </h2>
+                            <br />
+                            <div style="display:flex; text-align:center; justify-content: center; align-items: center;">
+                                <div class="input-group quantity"
+                                    style="width: 130px; text-align:center;justify-content: center; align-items: center;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary btn-minus" (click)="menos()"
+                                            style="border-radius: 10px;">
+                                            <i class="fa fa-minus" style="font-size: 21px;"></i>
+                                        </button>
+                                    </div>
+                                    <input [autocomplete]="resume()" type="text" style="border-radius: 10px;"
+                                        class="form-control bg-secondary border-0 text-center" [(ngModel)]="cantidad">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary btn-plus" (click)="mas()"
+                                            style="border-radius: 10px;">
+                                            <i class="fa fa-plus" style="font-size: 21px;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                            <button class="btn btn-primary px-3" (click)="agregarCart()" style="border-radius: 10px;">
+                                <mat-icon class="pt-1">
+                                    <span class="material-symbols-outlined">
+                                        local_shipping
+                                    </span>
+                                </mat-icon>
+                                &nbsp;Agregar
+                            </button>
+                            <br />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-30 lgd" style="margin-left: 50px; width: 93%;">
+            <div class="h-100 bg-light p-30 lgd" style="align-items: center;text-align:center;">
+                <h1 class="text-white"><b>Calendario de renta</b></h1>
+
+                <div class="f-flex mb-1">
+
+                    <p-calendar [(ngModel)]="value" [inline]="true" [showWeek]="true">
+                        <ng-template pTemplate="date" let-date>
+                            <span
+                                [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#81C784' : 'inherit'}"
+                                style="border-radius:50%; padding: .25em; width: 2em; height: 2em; display:block">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar>
+                    <p>{{value}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Detail End -->
+
+    <!-- <div class="contenedor">
         <div class="hijo">
             <div class="row ">
                 <div class="col">
@@ -31,11 +171,10 @@
                     <div class="container_1">
                         <img [src]="product[0].imagePath" alt="" height="450px">
                     </div><br>
-                    <div class="container_1"><button class="btn"
-                            style="margin-left: 130px;margin-right: 50px;font-size: 30px;"
-                            (click)="menos()">-</button><input [autocomplete]="resume()" type="text" class="form-control"
-                            [(ngModel)]="cantidad"><button class="btn"
-                            style="margin-left: 50px; font-size: 30px; margin-right: 130px;" (click)="mas()">+</button>
+                    <div class="container_1">
+                            <button class="btn" style="margin-left: 130px;margin-right: 50px;font-size: 30px;" (click)="menos()">-</button>
+                            <input [autocomplete]="resume()" type="text" class="form-control" [(ngModel)]="cantidad">
+                            <button class="btn"style="margin-left: 50px; font-size: 30px; margin-right: 130px;" (click)="mas()">+</button>
                     </div>
                     <div>
                         <a class="list-group-item list-group-item-action active">
@@ -61,7 +200,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 
 </html>
