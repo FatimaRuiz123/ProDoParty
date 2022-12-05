@@ -37,7 +37,7 @@
                               <div class="p-3" style="max-width: 700px;">
                                   <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ mesaRandom[0].Name }}</h1>
                                   <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ mesaRandom[0].Description }}</p>
-                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" >Rentar</a>
+                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" (click)="detalles('' + mesaRandom[0].id)" >Rentar</a>
                               </div>
                           </div>
                       </div>
@@ -47,7 +47,7 @@
                               <div class="p-3" style="max-width: 700px;">
                                   <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">{{ adornoRandom[0].Name }}</h1>
                                   <p class="mx-md-5 px-5 animate__animated animate__bounceIn">{{ adornoRandom[0].Description }}</p>
-                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp">Rentar</a>
+                                  <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" (click)="detalles('' + mesaRandom[0].id)">Rentar</a>
                               </div>
                           </div>
                       </div>
@@ -60,7 +60,7 @@
                   <div class="offer-text">
                       <h6 class="text-white text-uppercase">{{ mesaRandom[0].Description }}</h6>
                       <h3 class="text-white mb-3">{{ mesaRandom[0].Name }}</h3>
-                      <a href="" class="btn btn-primary">Rentar</a>
+                      <a (click)="detalles('' + mesaRandom[0].id)" class="btn btn-primary">Rentar</a>
                   </div>
               </div>
               <div class="product-offer mb-30" style="height: 200px;" (click)="detalles('' + mesaRandom[0].id)">
@@ -68,7 +68,7 @@
                   <div class="offer-text">
                       <h6 class="text-white text-uppercase">{{ adornoRandom[0].Description }}</h6>
                       <h3 class="text-white mb-3">{{ adornoRandom[0].Name }}</h3>
-                      <a href="" class="btn btn-primary">Rentar</a>
+                      <a (click)="detalles('' + mesaRandom[0].id)" class="btn btn-primary">Rentar</a>
                   </div>
               </div>
           </div>
