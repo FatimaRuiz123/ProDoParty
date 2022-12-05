@@ -16,7 +16,7 @@ import { ProductsService } from 'src/app/services/products.service';
             <div class="product-img position-relative overflow-hidden">
               <img [src]="adorno.imagePath" class="img-fluid w-100" alt="" />
               <div class="product-action">
-                <a class="btn btn-primary" class="btn btn-outline-dark">Ver
+                <a class="btn btn-outline-dark" style="border-radius: 10px;">Ver
                   Detalles&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
               </div>
               <div class="text-center py-4">
